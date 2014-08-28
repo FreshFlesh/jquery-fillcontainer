@@ -1,28 +1,29 @@
-jquery.fillcontainer
+jquery-fillcontainer
 ============================================
 
 _Make a child element fill its container. Works with images, video, or any other element._
 
 
-### Usage
-
-        $(<selector>).fillContainer();
-
 ### Options
 
 Option | Type | Default | Description
 ------ | ---- | ------- | -----------
-aspectRatio | int | 1 | Element aspect ratio is automatically computed from element size, but you can override this with this option.
-parent | string | $(<selector>).parent() | Parent element to conform to. Default is direct parent.
+aspectRatio | int | null | Element aspect ratio is automatically computed from element size, but you can override this with this option.
+parent | string | null | Parent element to conform to. Default is direct parent.
+continous | bool | true | if true, element will keep filling its container after window resize events. usefull for responsive websites.
+offset | int array | [0, 0] | By default the element will be centered inside the container, but you can apply an offset.
 
 
-#### Example
+### Usage
+
+Simple 
+        $(<selector>).fillContainer();
+
+With options
         $(<selector>).fillContainer({
             aspectRatio : 1.5,
             parent : '.parent-class'
         });
-
-
 
 ### License
 
