@@ -29,6 +29,12 @@ With options
             parent : '.parent-class'
         });
 
+
+Make sure the child element already have a computable size (i.e. image is loaded).
+
+You can use libraries like [jquery.imgpreload](https://github.com/farinspace/jquery.imgpreload) or [imagesloaded](https://github.com/desandro/imagesloaded) or you can also specify the child element ratio as an option or data attribute (aspectRatio option) if you know it.
+
+
 ### License
 
 MIT
