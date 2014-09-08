@@ -37,7 +37,6 @@
             }
 
             if ( -1 === $.inArray( elementOptions.fillMode, ['fill', 'fit'] ) ) {
-
                 elementOptions.fillMode = 'fill';
             }
 
@@ -52,9 +51,9 @@
                 var parentWidth = parentElement.width();
                 var parentHeight = parentElement.height();
                 var parentRatio = parentWidth / parentHeight;
-                if (
-                       ( ( 'fill' === elementOptions.fillMode )&& (parentRatio > elementOptions.aspectRatio) )
-                    || ( ( 'fit' === elementOptions.fillMode ) && (parentRatio < elementOptions.aspectRatio)) ) {
+                
+                if ( ( ( 'fill' === elementOptions.fillMode ) && ( parentRatio > elementOptions.aspectRatio ) )
+                   || ( ( 'fit' === elementOptions.fillMode ) && ( parentRatio < elementOptions.aspectRatio ) ) ) {
                     element.css({
                         'width'       : parentWidth,
                         'height'      : Math.ceil( parentWidth / elementOptions.aspectRatio ),
