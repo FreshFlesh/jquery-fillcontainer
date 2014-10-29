@@ -48,8 +48,8 @@
             }
             
             function resizeElement ( ) {
-                var parentWidth = parentElement.width();
-                var parentHeight = parentElement.height();
+                var parentWidth = parentElement.outerWidth();
+                var parentHeight = parentElement.outerHeight();
                 var parentRatio = parentWidth / parentHeight;
                 
                 if ( ( ( 'fill' === elementOptions.fillMode ) && ( parentRatio > elementOptions.aspectRatio ) )
