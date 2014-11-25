@@ -12,12 +12,13 @@
  
     $.fn.fillContainer = function( options ) {
         var defaults = {
-            aspectRatio : null,
-            parent      : '',
-            fillMode    : 'fill',
-            continuous  : true,
-            cropFactor  : [ 1, 1 ],
-            offset      : [ 0, 0 ]
+            aspectRatio   : null,
+            parent        : '',
+            fillMode      : 'fill',
+            continuous    : true,
+            cropFactor    : [ 1, 1 ],
+            offset        : [ 0, 0 ],
+            debounceDelay : 100
         };
 
         options = $.extend( defaults, options );
@@ -26,9 +27,11 @@
             var element = $( this );
             // merge options from inline attributes
             var elementOptions = $.extend( options, element.data() );
+            
+            var debounceTimer = null;
 
             // get basic infos about element
-            var elementWidth = element.width();
+            var elementWidth  = element.width();
             var elementHeight = element.height();
             var parentElement = elementOptions.parent ? element.parents( elementOptions.parent ) : element.parent();
 
@@ -44,16 +47,28 @@
             resizeElement();
 
             if ( true === elementOptions.continuous ) {
-                $(window).on( 'resize.fillcontainer', resizeElement );
+                $(window).on( 'resize.fillcontainer', function(){
+                    
+                    if ( 0 === debounceDelay ) resizeElement();
+                    else {
+                        clearTimeout( debounceTimer );
+                        debounceTimer = window.setTimeout(function() {
+                            resizeElement();
+                        }, elementOptions.debounceDelay );
+                    }
+
+                } );
             }
             
             function resizeElement ( ) {
+                
                 var parentWidth = parentElement.outerWidth();
                 var parentHeight = parentElement.outerHeight();
                 var parentRatio = parentWidth / parentHeight;
-                
+
                 if ( ( ( 'fill' === elementOptions.fillMode ) && ( parentRatio > elementOptions.aspectRatio ) )
                    || ( ( 'fit' === elementOptions.fillMode ) && ( parentRatio < elementOptions.aspectRatio ) ) ) {
+                    
                     element.css({
                         'width'       : parentWidth,
                         'height'      : Math.ceil( parentWidth / elementOptions.aspectRatio ),
@@ -62,6 +77,7 @@
                     });
                 }
                 else {
+                    
                     element.css({
                         'height'      : parentHeight,
                         'width'       : Math.ceil( parentHeight * elementOptions.aspectRatio ),
