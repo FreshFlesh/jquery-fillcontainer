@@ -49,7 +49,7 @@
             if ( true === elementOptions.continuous ) {
                 $(window).on( 'resize.fillcontainer', function(){
                     
-                    if ( 0 === debounceDelay ) resizeElement();
+                    if ( 0 === elementOptions.debounceDelay ) resizeElement();
                     else {
                         clearTimeout( debounceTimer );
                         debounceTimer = window.setTimeout(function() {
