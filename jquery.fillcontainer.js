@@ -1,7 +1,7 @@
 /*
  * jquery.fillcontainer.js
  * Make a child element fill its container
- * https://github.com/FreshFlesh/jquery-fillcontainer
+ * https://github.com/thomascharbit/jquery-fillcontainer
  *
  * Copyright (c) 2012-2014 Thomas Charbit
  * Licensed under the MIT (http://www.opensource.org/licenses/mit-license.php) license.

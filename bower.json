@@ -6,7 +6,7 @@
   ],
   "description": "Make a child element fill its container",
   "license": "MIT",
-  "homepage": "https://github.com/FreshFlesh/jquery-fillcontainer",
+  "homepage": "https://github.com/thomascharbit/jquery-fillcontainer",
   "ignore": [
     "**/.*",
     "node_modules",
